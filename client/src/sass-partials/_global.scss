@@ -1,0 +1,57 @@
+@import "./typography";
+@import "./mixins";
+@import "./variables";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+#link {
+  text-decoration: none;
+  color: black;
+  &:hover {
+    color: $secondary-color;
+  }
+}
+
+aside.emoji-picker-react {
+  background-color: #131c21;
+  border: none;
+  border-radius: 0;
+}
+
+._1ceqH ._1Yplu ._1Pz2d {
+  display: none;
+}
+
+._1ceqH ._dt3-T {
+  background-color: black;
+}
+
+._1ceqH ._1lB9c ._2N9dq {
+  font-size: 1rem;
+}
+
+._1ceqH ._dt3-T {
+  min-height: 100%;
+  text-align: center;
+}
+
+._1ceqH ._1lB9c {
+  height: 40px;
+  background: #131c21 !important;
+}

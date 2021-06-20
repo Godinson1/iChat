@@ -1,0 +1,278 @@
+@import "../../../sass-partials/mixins";
+@import "../../../sass-partials/variables";
+@import "../../../sass-partials/breakpoints";
+
+.chat-landing {
+  width: 100%;
+  height: 100vh;
+  background: #262d31;
+  @include flex-center;
+  flex-direction: column;
+  border-bottom: 5px solid $secondary-color;
+
+  .logo {
+    width: 200px;
+    height: 200px;
+    @include avatar-image;
+  }
+
+  h1 {
+    color: $secondary-color;
+  }
+
+  .chat-landing-dec {
+    margin-top: 50px;
+    color: grey;
+    font-size: 1.1rem;
+    font-style: italic;
+    text-align: center;
+  }
+}
+
+.back-arrow {
+  color: white;
+  font-weight: 900;
+  font-size: 1.5rem;
+  margin-right: 20px;
+  cursor: pointer;
+  @include flex-center;
+}
+
+.back-arrow > * + * {
+  margin: 0 0 0 5px;
+}
+
+.chat-main {
+  width: 100%;
+  height: 100vh;
+  background: #262d31;
+
+  .main-header {
+    width: 100%;
+    height: 70px;
+    background-color: $background-color;
+    top: 0;
+    padding: 20px;
+    position: fixed;
+    @include flex-between;
+  }
+
+  .main-footer {
+    width: 100%;
+    height: 80px;
+    background-color: $background-color;
+    bottom: 0;
+    padding: 0 31% 0 20px;
+    position: fixed;
+
+    .footer-container {
+      @include flex-start-center;
+      width: 100%;
+      height: 100%;
+      color: gray;
+    }
+
+    .footer-container > * + * {
+      margin: 0 0 0 15px;
+    }
+
+    .send-message {
+      border-radius: 10px;
+      font-weight: bold;
+      color: $primary-color;
+    }
+
+    .input-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 50px;
+      width: 80%;
+      border: 1px solid grey;
+      padding: 5px 10px 5px 10px;
+      cursor: pointer;
+    }
+
+    .input-container > * + * {
+      margin: 0 0 0 20px;
+    }
+
+    .message-input-container {
+      width: 100%;
+      height: 50px;
+      @include flex-center;
+
+      input {
+        height: 100%;
+        width: 100%;
+        border: none;
+        background: transparent;
+        color: $primary-color;
+        font-size: 1rem;
+
+        &:focus {
+          border: none;
+          outline: none;
+        }
+
+        &::placeholder {
+          color: grey;
+        }
+      }
+    }
+  }
+}
+
+.message-container {
+  width: 100vw;
+  position: absolute;
+  top: 70px;
+  bottom: 80px;
+}
+
+.container {
+  width: 70%;
+  height: 100%;
+  color: $primary-color;
+  padding: 20px;
+  display: flex;
+  overflow: auto;
+  flex-direction: column-reverse;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $background-color;
+  }
+}
+
+.sent {
+  align-self: flex-end;
+}
+
+.base-desc {
+  color: gray;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.content {
+  border-radius: 5px;
+  margin-bottom: 10px;
+  background-color: $background-color;
+  padding: 10px 15px 10px 10px;
+  max-width: 400px;
+}
+
+.received {
+  align-self: flex-start;
+}
+
+.message-time {
+  color: gray;
+  margin-top: 5px;
+  font-size: 0.7rem;
+}
+
+.emoji-container {
+  bottom: 80px;
+  height: 300px;
+}
+
+.audio-container {
+  bottom: 50px;
+}
+
+.footer-options {
+  position: absolute;
+  margin-left: -20px;
+  width: 70%;
+  overflow: hidden;
+  transition: 0.5s;
+}
+
+.emoji-icon {
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.audio-icon-send {
+  cursor: pointer;
+  font-size: 1.3rem;
+  font-weight: bold;
+  @include flex-center;
+  border-radius: 50%;
+  padding: 5px 15px 10px 15px;
+  color: $primary-color;
+}
+
+.red {
+  background-color: red;
+}
+
+.green {
+  background-color: green;
+}
+
+.audio-icon {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  @include flex-center;
+
+  img {
+    transform: rotate(-90deg);
+    height: 80%;
+  }
+
+  #record {
+    transform: rotate(-0deg);
+    height: 80%;
+  }
+}
+
+#line {
+  width: 50%;
+  height: 0.6px;
+  background-color: darkgray;
+}
+
+.no-data {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  padding: 20px;
+  @include flex-center;
+}
+
+@include media-sm {
+  .container,
+  .emoji-container,
+  .audio-container {
+    width: 100%;
+  }
+
+  .content {
+    max-width: 200px;
+    overflow: hidden;
+  }
+
+  .ichat-audio {
+    width: 150px;
+    background: none;
+  }
+
+  .main-header,
+  .main-footer,
+  .container {
+    padding: 10px !important;
+  }
+}

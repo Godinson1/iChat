@@ -1,0 +1,88 @@
+@import "../../sass-partials//mixins";
+@import "../../sass-partials/variables";
+@import "../../sass-partials/breakpoints";
+
+.landing {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(15, 15, 15);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  @include flex-center;
+  text-align: center;
+  overflow: auto;
+  flex-direction: column;
+
+  h1 {
+    color: $secondary-color;
+  }
+
+  .text-center {
+    margin-top: 30px;
+  }
+
+  .auth-error-containter {
+    padding: 20px;
+    background-color: red;
+    color: $primary-color;
+    transition: all 1s;
+    font-weight: bold;
+  }
+
+  .auth-container {
+    width: 400px;
+    margin-top: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    color: $black-color;
+    background-color: $primary-color;
+    border-radius: 5px;
+    padding: 20px;
+    transition: transform 1s;
+  }
+}
+
+.main {
+  width: 100vw;
+  height: 100vh;
+  @include flex-center;
+  color: $primary-color;
+
+  .selected {
+    background: rgba(240, 233, 233, 0.096);
+  }
+}
+
+#title {
+  font-weight: 600;
+  color: $primary-color;
+  font-family: Lato;
+}
+
+#desc {
+  font-style: bold;
+  font-size: 1rem;
+  color: rgb(158, 155, 155);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 200px;
+}
+
+.active-chats-header-options {
+  transform: rotate(90deg);
+  letter-spacing: 3px;
+  color: grey;
+  font-weight: 900;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+@include media-sm {
+  .landing {
+    padding: 50px 20px 50px 20px;
+  }
+
+  .auth-container {
+    width: 100% !important;
+  }
+}

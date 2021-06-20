@@ -1,0 +1,88 @@
+@import "../../sass-partials/mixins";
+@import "../../sass-partials/variables";
+@import "../../sass-partials/typography";
+@import "../../sass-partials/breakpoints";
+
+.contacts {
+  width: 500px;
+  height: 500px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding: 20px;
+  overflow: auto;
+  transition: 1s;
+  background-color: $background-color;
+}
+
+.close {
+  align-self: flex-end;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0 10px 5px 10px;
+  @include flex-center;
+  background-color: #262d31;
+
+  &:hover {
+    background: rgba(240, 233, 233, 0.096);
+  }
+}
+
+#red {
+  background-color: red;
+}
+
+.contact-container {
+  margin-top: 20px;
+  @include flex-between;
+  cursor: pointer;
+
+  .flex > * + * {
+    margin: 0 0 0 10px;
+  }
+}
+
+.contact-container > * + * {
+  margin: 0 0 0 20px;
+}
+
+.contact-header {
+  margin-top: 20px;
+  cursor: pointer;
+  @include flex-between;
+  flex-wrap: wrap;
+}
+
+.contact-header > * + * {
+  margin: 0 0 0 10px;
+}
+
+.add-contact {
+  width: 100%;
+  @include flex-center;
+  flex-direction: column;
+  padding: 10px;
+  margin-top: 50px;
+}
+
+.active {
+  padding: 5px;
+  border-radius: 5px;
+  background: green;
+}
+
+@include media-sm {
+  .contacts {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    overflow: auto;
+  }
+
+  .contact-header > * + * {
+    margin: 10px 0 0 0;
+  }
+}

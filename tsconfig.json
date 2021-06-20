@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "outDir": "build",
+    "rootDir": "./base",
+    "strict": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "typeRoots": ["./typings", "./node_modules/@types"]
+  },
+  "include": ["base/**/*.ts", "base/server.ts"],
+  "exclude": ["node_modules", "typings"]
+}

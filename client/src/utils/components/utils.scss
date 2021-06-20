@@ -1,0 +1,34 @@
+@import "../../sass-partials/variables";
+@import "../../sass-partials/mixins";
+
+.ichat-btn {
+  @include custom-button;
+}
+
+.ichat-btn-container {
+  width: 100%;
+  @include flex-center;
+}
+
+.ichat-input {
+  @include custom-input;
+}
+
+.ichat-input-error {
+  @include custom-input;
+  border: 1px solid red;
+}
+
+.ichat-input-container {
+  margin-bottom: 10px;
+}
+
+#label {
+  margin-bottom: 5px;
+}
+
+#error {
+  float: left;
+  color: red;
+  font-size: 1.1rem;
+}

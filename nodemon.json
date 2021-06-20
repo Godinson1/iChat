@@ -1,0 +1,6 @@
+{
+  "watch": ["base"],
+  "ext": "ts",
+  "ignore": ["base/**/*.spec.ts"],
+  "exec": "ts-node --files base/server.ts"
+}
