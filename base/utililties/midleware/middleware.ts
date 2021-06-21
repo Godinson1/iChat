@@ -15,6 +15,8 @@ export const auth = async (ctx: ExpressContext) => {
 
   //check if the context has the header[authorization]
   //and also connection for subscriptions
+  console.log(ctx.req && ctx.req.headers.authorization);
+  console.log(ctx.connection && ctx.connection.context.Authorization);
   if (ctx.req && ctx.req.headers.authorization) {
     token = ctx.req.headers.authorization?.split("Bearer ")[1] as string;
   } else if (ctx.connection && ctx.connection.context.Authorization) {
@@ -22,7 +24,9 @@ export const auth = async (ctx: ExpressContext) => {
   }
 
   //Verify token passed by user and decode it.
+
   if (token) {
+    console.log("token", token);
     jwt.verify(token, `${process.env.JWT_SECRET}`, (err, decodedToken) => {
       //Set the authenticated user in user context
       ctx.user = decodedToken as IDecodedToken;

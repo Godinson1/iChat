@@ -52,7 +52,7 @@ const AllContacts = () => {
       ) : (
         <div>
           {loading ? (
-            <div>
+            <div className="no-data">
               <LoaderChat />
             </div>
           ) : contacts && contacts.contacts === [] ? (

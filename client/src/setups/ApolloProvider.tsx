@@ -10,9 +10,11 @@ import { setContext } from "@apollo/client/link/context";
 import { getMainDefinition } from "@apollo/client/utilities";
 import { WebSocketLink } from "@apollo/client/link/ws";
 
+const production = process.env.NODE_ENV === "production";
+
 // Create File Upload Link
 const uploadLink = createUploadLink({
-  uri: "/graphql/",
+  uri: production ? "/graphql/" : "http://localhost:4000/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -33,7 +35,7 @@ const link = ApolloLink.from(authTerminatingLink);
 const host = window.location.host;
 
 const wsLink = new WebSocketLink({
-  uri: `ws://${host}/graphql/`,
+  uri: production ? `ws://${host}/graphql/` : "ws://localhost:4000/graphql",
   options: {
     reconnect: true,
     timeout: 20000,
