@@ -48,7 +48,7 @@ export const jwtSignInUser = (user: IUser): string => {
   const ONE_DAY = 60 * 60 * 24;
   const { id, username, email, photoUrl } = user;
   const userData = { id, username, email, photoUrl };
-  return jwt.sign(userData, `${process.env.jwt_secret}`, {
+  return jwt.sign(userData, `${process.env.JWT_SECRET}`, {
     expiresIn: ONE_DAY,
   });
 };
