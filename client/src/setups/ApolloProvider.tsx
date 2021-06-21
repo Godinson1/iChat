@@ -12,7 +12,7 @@ import { WebSocketLink } from "@apollo/client/link/ws";
 
 // Create File Upload Link
 const uploadLink = createUploadLink({
-  uri: "http://localhost:4000/graphql/",
+  uri: "/graphql/",
 });
 
 const authLink = setContext((_, { headers }) => {
