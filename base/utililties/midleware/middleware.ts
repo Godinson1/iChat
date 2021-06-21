@@ -27,11 +27,8 @@ export const auth = async (ctx: ExpressContext) => {
     jwt.verify(token, `${process.env.JWT_SECRET}`, (err, decodedToken) => {
       //Set the authenticated user in user context
       if (err) console.log(err);
-      console.log(decodedToken);
-      console.log("secret", process.env.JWT_SECRET);
       ctx.user = decodedToken as IDecodedToken;
     });
-    console.log("user", ctx.user);
   }
 
   //Set the pubsub as pubsub in the context
