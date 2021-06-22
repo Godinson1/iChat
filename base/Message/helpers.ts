@@ -7,15 +7,9 @@ import { storage } from "../config";
 
 const bucket = storage.bucket("ichat-app");
 
-/**
- *
- *
- */
-
 const uploadMedia = async (stream: any, filename: string, type: string) => {
   //Upload file temporary to photo folder in directory.
-  const uploadDir = "../chat-app/base/photos";
-
+  const uploadDir = path.join(__dirname, "../photos");
   //Get media path to upload from
   const mediaPath = `${uploadDir}/${filename}`;
 
