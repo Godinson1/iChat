@@ -12,21 +12,13 @@ import { WebSocketLink } from "@apollo/client/link/ws";
 
 const production = process.env.NODE_ENV === "production";
 
-// Create File Upload Link
 const uploadLink = createUploadLink({
   uri: production ? "/graphql/" : "http://localhost:4000/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {
-  // get the authentication token from local storage if it exists
   const token = localStorage.getItem("ichatToken");
-  // return the headers to the context so httpLink can read them
-  return {
-    headers: {
-      ...headers,
-      authorization: token ? `Bearer ${token}` : "",
-    },
-  };
+  return { headers: {...headers, authorization: token ? `Bearer ${token}` : ""}};
 });
 
 const authTerminatingLink = [authLink, uploadLink];
@@ -51,11 +43,6 @@ window.addEventListener("beforeunload", () => {
   wsLink.subscriptionClient.close();
 });
 
-// The split function takes three parameters:
-//
-// * A function that's called for each operation to execute
-// * The Link to use for an operation if the function returns a "truthy" value
-// * The Link to use for an operation if the function returns a "falsy" value
 const splitLink = split(
   ({ query }) => {
     const definition = getMainDefinition(query);

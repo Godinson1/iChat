@@ -1,49 +1,39 @@
 export {};
-import util from "util";
 import fs from "fs";
-import { v4 } from "uuid";
 import path from "path";
-import { storage } from "../config";
+import { v2 as cloudinary } from "cloudinary";
 
-const bucket = storage.bucket("ichat-app");
+cloudinary.config({
+  cloud_name: `${process.env.cloudinaryName}`,
+  api_key: `${process.env.cloudinaryApiKey}`,
+  api_secret: `${process.env.cloudinarySecretKey}`,
+  secure: true,
+});
 
-const uploadMedia = async (stream: any, filename: string, type: string) => {
-  //Upload file temporary to photo folder in directory.
+const uploadFromBuffer = (stream: any, filename: string, type: string): Promise<string> => {
   const uploadDir = path.join(__dirname, "../photos");
-  //Get media path to upload from
   const mediaPath = `${uploadDir}/${filename}`;
-
-  //Structure file name with alignment to folder in cloud storage bucket
-  const blob = bucket.file(
-    type === "profile"
-      ? "profile/" + v4() + path.extname(filename)
-      : "audio/" + v4() + path.extname(filename)
-  );
-
-  return new Promise((resolve, reject) =>
+  return new Promise((resolve, reject) => {
     stream
       .on("error", (error: any) => {
-        if (stream.truncated)
-          // delete the truncated file
-          fs.unlinkSync(mediaPath);
+        if (stream.truncated) fs.unlinkSync(mediaPath);
         reject(error);
       })
       .pipe(fs.createWriteStream(mediaPath))
       .on("error", (error: any) => reject(error))
       .on("finish", async () => {
-        const res = await bucket.upload(mediaPath, {
-          destination: blob.name,
-        });
-
+        const res = await cloudinary.uploader.upload(mediaPath, { folder: type === "profile" ? "profile" : "audio" });
         if (res) {
           fs.unlinkSync(mediaPath);
         }
-        const url = util.format(
-          `https://storage.googleapis.com/${bucket.name}/${blob.name}`
-        );
-        resolve(url);
-      })
-  );
+        resolve(res.url);
+      });
+  });
 };
 
-export { uploadMedia };
+const uploadImageCloudinary = async (stream: any, filename: string, type: string): Promise<string> => {
+  const result = await uploadFromBuffer(stream, filename, type);
+  return result;
+};
+
+export { uploadImageCloudinary };
