@@ -35,7 +35,7 @@ db.sequelize
   .then(() => {
     httpServer.listen(PORT, () => {
       console.log("connected to database successfully..");
-      console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`);
+      console.log(`🚀 Server ready at ${PORT}/${server.graphqlPath}`);
     });
   })
   .catch((err: any) => console.log(err));
