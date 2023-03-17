@@ -9,7 +9,8 @@
   },
   "scripts": {
     "start": "ts-node --files base/server.ts",
-    "dev": "nodemon"
+    "dev": "nodemon",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",

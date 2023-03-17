@@ -1,3 +1,0 @@
-# iChat
-
-Let's chat!
