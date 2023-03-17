@@ -7,6 +7,7 @@ module.exports = {
     database: process.env.PG_DEV_DB,
     host: process.env.PG_DEV_HOST,
     dialect: process.env.PG_DIALET,
+    url: process.env.PG_URL,
     logging: false,
   },
   test: {
@@ -21,6 +22,7 @@ module.exports = {
     password: process.env.PG_PASSWORD,
     database: process.env.PG_DB,
     host: process.env.PG_HOST,
+    url: process.env.PG_URL,
     dialect: "postgres",
   },
 };
