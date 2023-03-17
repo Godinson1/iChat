@@ -31,11 +31,11 @@ server.installSubscriptionHandlers(httpServer);
 const PORT = process.env.PORT || 4000;
 
 db.sequelize
-  .sync()
+  .sync({ alter: true })
   .then(() => {
     httpServer.listen(PORT, () => {
       console.log("connected to database successfully..");
-      console.log(`🚀 Server ready at ${PORT}/${server.graphqlPath}`);
+      console.log(`🚀 Server ready at ${PORT}${server.graphqlPath}`);
     });
   })
   .catch((err: any) => console.log(err));

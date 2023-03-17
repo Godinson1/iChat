@@ -3,13 +3,13 @@
     "target": "es6",
     "module": "commonjs",
     "outDir": "./dist/",
-    "rootDir": "./base",
+    "rootDir": "./",
     "strict": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "typeRoots": ["./typings", "./node_modules/@types"]
   },
-  "include": ["base/**/*.ts", "base/server.ts"],
+  "include": ["base/**/*.ts", "base/server.ts", "database/**/*.ts"],
   "exclude": ["node_modules", "typings"]
 }
